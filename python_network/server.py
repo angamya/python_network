@@ -25,5 +25,14 @@ def connect(client):
             clients.remove(client)
             client.close()
             nickname=nicknames[index]
-            broadcast(f"{nickname} bye the chat!", encode('ascii') )
+            broadcast(f"{nickname} bye the chat!".encode('ascii') )
             nicknames.remove(nickname)
+            break
+
+def receive():
+    while True:
+        client, address =server.accept()
+        print(f"Connect with {str(address)}")
+
+        client.send('NICK'.encode('ascii')) 
+        nickname=client.recv(1024).decode('ascii')
