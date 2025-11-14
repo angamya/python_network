@@ -36,3 +36,15 @@ def receive():
 
         client.send('NICK'.encode('ascii')) 
         nickname=client.recv(1024).decode('ascii')
+        nicknames.append(nickname)
+        clients.append(client)
+
+        print(f"Nickname of the client is {nickname}.")
+        broadcast(f"{nickname} joined the chat...".encode("ascii"))
+        client.send('--connect to the server--'.encode('ascii'))
+
+        thread= threading.Thread(target= connect, args=(client,))
+        thread.start()
+
+print("server is listening...")
+receive()
