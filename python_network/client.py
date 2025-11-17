@@ -18,7 +18,7 @@ def receive():
             print("an error occured!")
             client.close()
             break
-        
+        #lolipop
             
 
             
