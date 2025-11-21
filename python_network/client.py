@@ -4,7 +4,7 @@ import threading
 nickname=input("Write a nickname: ")
 
 client=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('127.0.0.1', 77777))
+client.connect(('127.0.0.1', 6666))
 
 def receive():
     while True:
@@ -21,5 +21,15 @@ def receive():
         #lolipop
             
 
+def write():
+    while True:
+        message = f"{nickname}: {input("")}"
+        client.send(message.encode("ascii"))
+
+receive_thread=threading.Thread(target=receive)
+receive_thread.start()
+   
+write_thread=threading.Thread(target=write)
+write_thread.start() #done
             
 
