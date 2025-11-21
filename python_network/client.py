@@ -18,6 +18,8 @@ def receive():
             print("an error occured!")
             client.close()
             break
+        #lolipop
+            
 
 def write():
     while True:
